@@ -1,0 +1,201 @@
+@import url('https://fonts.googleapis.com/css2?family=Amiri+Quran&family=Amiri:wght@400;700&family=Noto+Nastaliq+Urdu:wght@400;600&family=Scheherazade+New:wght@400;500;600;700&family=Reem+Kufi:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 166 45% 6%;
+    --foreground: 140 16% 96%;
+    --card: 162 40% 10%;
+    --card-foreground: 140 16% 96%;
+    --popover: 162 40% 10%;
+    --popover-foreground: 140 16% 96%;
+    --primary: 42 63% 63%;
+    --primary-foreground: 166 45% 6%;
+    --secondary: 162 46% 20%;
+    --secondary-foreground: 140 16% 96%;
+    --muted: 162 30% 14%;
+    --muted-foreground: 156 12% 64%;
+    --accent: 42 63% 63%;
+    --accent-foreground: 166 45% 6%;
+    --destructive: 0 70% 50%;
+    --destructive-foreground: 140 16% 96%;
+    --border: 159 32% 24%;
+    --input: 159 32% 24%;
+    --ring: 42 63% 63%;
+    --chart-1: 42 63% 63%;
+    --chart-2: 162 46% 40%;
+    --chart-3: 168 45% 30%;
+    --chart-4: 45 65% 68%;
+    --chart-5: 180 26% 83%;
+    --radius: 0.75rem;
+    --font-heading: ui-sans-serif, system-ui, sans-serif;
+    --font-body: ui-sans-serif, system-ui, sans-serif;
+    --font-display: ui-sans-serif, system-ui, sans-serif;
+    --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    --font-arabic: 'Scheherazade New', 'Amiri', serif;
+    --font-quran: 'Amiri Quran', 'Amiri', 'Scheherazade New', serif;
+    --font-urdu: 'Noto Nastaliq Urdu', 'Amiri', serif;
+    --sidebar-background: 166 45% 6%;
+    --sidebar-foreground: 140 16% 96%;
+    --sidebar-primary: 42 63% 63%;
+    --sidebar-primary-foreground: 166 45% 6%;
+    --sidebar-accent: 42 63% 63%;
+    --sidebar-accent-foreground: 166 45% 6%;
+    --sidebar-border: 159 32% 24%;
+    --sidebar-ring: 42 63% 63%;
+  }
+
+  .dark {
+    --background: 166 45% 6%;
+    --foreground: 140 16% 96%;
+    --card: 162 40% 10%;
+    --card-foreground: 140 16% 96%;
+    --popover: 162 40% 10%;
+    --popover-foreground: 140 16% 96%;
+    --primary: 42 63% 63%;
+    --primary-foreground: 166 45% 6%;
+    --secondary: 162 46% 20%;
+    --secondary-foreground: 140 16% 96%;
+    --muted: 162 30% 14%;
+    --muted-foreground: 156 12% 64%;
+    --accent: 42 63% 63%;
+    --accent-foreground: 166 45% 6%;
+    --destructive: 0 70% 50%;
+    --destructive-foreground: 140 16% 96%;
+    --border: 159 32% 24%;
+    --input: 159 32% 24%;
+    --ring: 42 63% 63%;
+    --chart-1: 42 63% 63%;
+    --chart-2: 162 46% 40%;
+    --chart-3: 168 45% 30%;
+    --chart-4: 45 65% 68%;
+    --chart-5: 180 26% 83%;
+    --sidebar-background: 166 45% 6%;
+    --sidebar-foreground: 140 16% 96%;
+    --sidebar-primary: 42 63% 63%;
+    --sidebar-primary-foreground: 166 45% 6%;
+    --sidebar-accent: 42 63% 63%;
+    --sidebar-accent-foreground: 166 45% 6%;
+    --sidebar-border: 159 32% 24%;
+    --sidebar-ring: 42 63% 63%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+
+  body {
+    @apply bg-background text-foreground font-body;
+    background-image:
+      radial-gradient(circle at 18% 8%, rgba(31, 103, 81, 0.32), transparent 31%),
+      radial-gradient(circle at 100% 42%, rgba(190, 142, 54, 0.12), transparent 30%);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+  }
+}
+
+@keyframes rise {
+  from { opacity: 0; transform: translateY(14px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes orb {
+  0%, 100% { transform: translate(0, 0) rotate(0); }
+  50% { transform: translate(-12px, 15px) rotate(12deg); }
+}
+
+.animate-rise { animation: rise 0.55s ease both; }
+.animate-orb { animation: orb 12s ease-in-out infinite; }
+
+/* ===== Quran Reader — Professional Redesign (scoped) ===== */
+.q-reader { position: relative; min-height: 100vh; background: #081914; color: #edf0e8; padding-bottom: 80px; overflow: hidden; }
+.q-reader:before { content: ""; position: absolute; inset: 0; background: radial-gradient(circle at 15% 8%, rgba(62,103,78,.32), transparent 28%), radial-gradient(circle at 92% 42%, rgba(160,125,57,.13), transparent 30%); pointer-events: none; z-index: 0; }
+
+.q-reader .ambient { position: absolute; width: 180px; height: 180px; border: 1px solid rgba(194,158,82,.18); border-radius: 50%; right: -65px; top: 500px; animation: qreader-float 12s ease-in-out infinite; z-index: 0; pointer-events: none; }
+.q-reader .ambient:before { content: ""; position: absolute; inset: 24px; border: 1px solid rgba(194,158,82,.13); border-radius: 50%; }
+
+.q-reader .hero { position: relative; height: 330px; overflow: hidden; border-bottom: 1px solid rgba(194,158,82,.35); z-index: 1; }
+.q-reader .hero img { position: absolute; width: 100%; height: 100%; object-fit: cover; filter: saturate(.72) contrast(1.05); }
+.q-reader .hero:after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(4,15,12,.4), rgba(8,25,20,.96) 92%); }
+.q-reader .hero-content { position: relative; z-index: 1; height: 100%; padding: 24px 54px; display: flex; flex-direction: column; justify-content: space-between; }
+
+.q-reader .topbar { display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+.q-reader .cluster { display: flex; align-items: center; gap: 10px; }
+
+.q-reader .icon-btn, .q-reader .gold-btn, .q-reader .pill, .q-reader .select { border: 1px solid rgba(194,158,82,.42); color: #e8d8a7; background: rgba(12,39,30,.78); box-shadow: 0 8px 24px rgba(0,0,0,.18); transition: background .2s, color .2s, box-shadow .2s, transform .2s; cursor: pointer; }
+.q-reader .icon-btn { width: 42px; height: 42px; border-radius: 50%; display: grid; place-items: center; }
+.q-reader .icon-btn:hover, .q-reader .gold-btn:hover, .q-reader .pill:hover, .q-reader .select:hover { background: #c29e52; color: #102219; box-shadow: 0 10px 28px rgba(194,158,82,.2); }
+.q-reader .icon-btn:active, .q-reader .gold-btn:active, .q-reader .pill:active { transform: translateY(2px); }
+.q-reader .icon-btn:focus-visible, .q-reader .gold-btn:focus-visible, .q-reader .pill:focus-visible, .q-reader .select:focus-visible { outline: 2px solid #d7bd78; outline-offset: 3px; }
+
+.q-reader .page-badge { text-align: center; }
+.q-reader .page-badge small { display: block; color: #b6bcae; font-size: 11px; margin-bottom: 4px; }
+.q-reader .page-number { display: grid; place-items: center; width: 58px; height: 58px; border-radius: 50%; background: linear-gradient(145deg, #e0c57b, #99743a); color: #132218; border: 2px solid rgba(235,216,157,.7); font-size: 20px; font-weight: 700; box-shadow: inset 0 2px 2px rgba(255,255,255,.5), 0 7px 16px #020b08; }
+
+.q-reader .hero-bottom { display: flex; align-items: end; justify-content: space-between; gap: 24px; }
+.q-reader .hero-title { font-size: 32px; line-height: 1.15; font-weight: 650; letter-spacing: -.04em; color: #f2ead5; }
+.q-reader .hero-tools { display: flex; gap: 9px; flex-wrap: wrap; justify-content: flex-end; }
+.q-reader .gold-btn { border-radius: 999px; padding: 10px 17px; display: flex; align-items: center; gap: 8px; font-size: 14px; font-weight: 600; }
+.q-reader .pill { border-radius: 999px; padding: 10px 17px; display: flex; align-items: center; gap: 8px; font-size: 14px; font-weight: 500; }
+
+.q-reader .content { position: relative; z-index: 1; width: 100%; max-width: 1000px; margin: 0 auto; padding: 28px 20px 0; }
+.q-reader .nav-row { display: flex; align-items: center; justify-content: center; gap: 12px; padding-bottom: 24px; border-bottom: 1px solid rgba(194,158,82,.2); flex-wrap: wrap; }
+.q-reader .select { height: 42px; border-radius: 999px; padding: 0 16px; background: rgba(17,46,36,.9); color: #eee; direction: rtl; font-size: 14px; }
+.q-reader .select option { background: #102b22; color: #eee; }
+.q-reader .count { height: 42px; min-width: 58px; padding: 0 14px; border-radius: 999px; display: grid; place-items: center; background: linear-gradient(145deg, #d7b96e, #866332); border: 1px solid #c39f54; color: #162419; font-weight: 700; }
+
+.q-reader .bismillah { text-align: center; color: #d6bd78; font-family: Georgia, "Times New Roman", serif; font-size: 26px; padding: 18px 0 6px; direction: rtl; }
+
+.q-reader .verse { margin: 26px 0 20px; padding: 42px 60px 32px; border: 1px solid rgba(194,158,82,.48); border-radius: 24px; background: linear-gradient(145deg, rgba(25,62,47,.94), rgba(10,30,24,.98)); box-shadow: 0 22px 50px rgba(0,0,0,.25), inset 0 1px rgba(255,255,255,.06); text-align: center; position: relative; }
+.q-reader .verse:before, .q-reader .verse:after { content: ""; position: absolute; left: 50%; transform: translateX(-50%); width: 120px; height: 1px; background: linear-gradient(90deg, transparent, #c29e52, transparent); }
+.q-reader .verse:before { top: 19px; }
+.q-reader .verse:after { bottom: 17px; }
+.q-reader .arabic { font-family: Georgia, "Times New Roman", serif; direction: rtl; font-size: 44px; line-height: 1.85; color: #f3e8c8; }
+.q-reader .verse-ref { display: inline-flex; margin-top: 18px; border: 1px solid rgba(194,158,82,.48); background: #132f25; color: #d8bd78; border-radius: 999px; padding: 5px 14px; font-size: 12px; }
+
+.q-reader .section { margin-top: 18px; padding: 24px 28px; border: 1px solid rgba(151,171,151,.16); border-radius: 20px; background: rgba(19,48,38,.76); box-shadow: 0 12px 30px rgba(0,0,0,.13); backdrop-filter: blur(12px); position: relative; }
+.q-reader .section:after { content: ""; position: absolute; left: 28px; right: 28px; bottom: -10px; height: 1px; background: rgba(194,158,82,.17); }
+.q-reader .section:last-child:after { display: none; }
+.q-reader .section-head { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-bottom: 14px; margin-bottom: 18px; border-bottom: 1px solid rgba(194,158,82,.2); }
+.q-reader .section-title { margin: 0; color: #d6bd78; font-size: 16px; font-weight: 700; letter-spacing: .04em; }
+
+.q-reader .urdu { font-family: Georgia, "Times New Roman", serif; direction: rtl; text-align: right; font-size: 23px; line-height: 2; color: #eee6d2; }
+.q-reader .english { font-size: 17px; line-height: 1.7; color: #c9d2c5; }
+.q-reader .copy { direction: rtl; text-align: right; font-family: Georgia, "Times New Roman", serif; font-size: 20px; line-height: 2; color: #e9e5d7; }
+.q-reader .muted { color: #aab7ab; text-align: center; line-height: 1.7; font-size: 14px; }
+.q-reader .state { display: flex; flex-direction: column; align-items: center; gap: 10px; padding: 40px 0; color: #aab7ab; }
+
+@keyframes qreader-float { 0%,100% { transform: translate(0) rotate(0); } 50% { transform: translate(-18px,20px) rotate(18deg); } }
+@keyframes qreader-enter { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
+.q-reader .hero { animation: qreader-enter .7s ease both; }
+.q-reader .content > * { animation: qreader-enter .65s ease both; }
+.q-reader .content > *:nth-child(2) { animation-delay: .08s; }
+.q-reader .content > *:nth-child(3) { animation-delay: .16s; }
+.q-reader .content > *:nth-child(4) { animation-delay: .24s; }
+.q-reader .content > *:nth-child(5) { animation-delay: .32s; }
+
+@media (max-width: 700px) {
+  .q-reader .hero { height: 260px; }
+  .q-reader .hero-content { padding: 16px 20px; }
+  .q-reader .topbar { gap: 10px; }
+  .q-reader .icon-btn { width: 38px; height: 38px; }
+  .q-reader .page-number { width: 50px; height: 50px; font-size: 17px; }
+  .q-reader .hero-title { font-size: 22px; }
+  .q-reader .hero-bottom { flex-direction: column; align-items: flex-start; gap: 12px; }
+  .q-reader .hero-tools { gap: 7px; width: 100%; justify-content: flex-start; flex-wrap: wrap; }
+  .q-reader .gold-btn, .q-reader .pill { padding: 8px 12px; font-size: 12px; }
+  .q-reader .content { padding: 20px 16px 0; }
+  .q-reader .nav-row { gap: 6px; }
+  .q-reader .select { height: 36px; padding: 0 10px; font-size: 12px; }
+  .q-reader .count { height: 36px; min-width: 42px; font-size: 12px; }
+  .q-reader .verse { padding: 30px 24px 26px; margin: 20px 0 16px; }
+  .q-reader .arabic { font-size: 30px; line-height: 1.8; }
+  .q-reader .section { padding: 18px 20px; }
+  .q-reader .urdu { font-size: 20px; }
+  .q-reader .copy { font-size: 18px; }
+}
